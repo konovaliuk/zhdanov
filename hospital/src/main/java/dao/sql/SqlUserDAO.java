@@ -20,6 +20,17 @@ import model.UserType;
 public class SqlUserDAO implements UserDAO {
 
     public static final Logger logger = Logger.getLogger(SqlUserDAO.class.getName());
+    private static SqlUserDAO sqlUserDAO = null;
+
+    private SqlUserDAO() {
+    }
+
+    public static UserDAO getInstance() {
+        if (sqlUserDAO == null) {
+            return new SqlUserDAO();
+        }
+        return sqlUserDAO;
+    }
 
     @Override
     public User create(User user) {

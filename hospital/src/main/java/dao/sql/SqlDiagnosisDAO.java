@@ -19,6 +19,17 @@ import model.Diagnosis;
 public class SqlDiagnosisDAO implements DiagnosisDAO {
 
     private static final Logger logger = Logger.getLogger(DiagnosisDAO.class.getName());
+    private static SqlDiagnosisDAO sqlDiagnosisDAO = null;
+
+    private SqlDiagnosisDAO() {
+    }
+
+    public static SqlDiagnosisDAO getInstance() {
+        if (sqlDiagnosisDAO == null) {
+            return new SqlDiagnosisDAO();
+        }
+        return sqlDiagnosisDAO;
+    }
 
     @Override
     public Diagnosis create(Diagnosis diagnosis) {
@@ -63,6 +74,25 @@ public class SqlDiagnosisDAO implements DiagnosisDAO {
     }
 
     @Override
+    public Diagnosis findFinalByMedicalRecordId(Integer medicalRecordId) {
+        Diagnosis diagnosis = null;
+        try (Connection connection = ConnectionPool.getConnection();
+                PreparedStatement statement = connection.prepareStatement(Query.FIND_DIAGNOSIS_BY_MEDICAL_RECORD)) {
+            statement.setInt(1, medicalRecordId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    diagnosis = new Diagnosis(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+                            new Date(resultSet.getTimestamp(4).getTime()), resultSet.getInt(5), resultSet.getInt(6),
+                            resultSet.getBoolean(7));
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("Exception while getting diagnosis", e);
+        }
+        return diagnosis;
+    }
+
+    @Override
     public Diagnosis findById(int id) {
         // TODO Auto-generated method stub
         return null;
@@ -84,25 +114,6 @@ public class SqlDiagnosisDAO implements DiagnosisDAO {
     public List<Diagnosis> findAll() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    public Diagnosis findFinalByMedicalRecordId(Integer medicalRecordId) {
-        Diagnosis diagnosis = null;
-        try (Connection connection = ConnectionPool.getConnection();
-                PreparedStatement statement = connection.prepareStatement(Query.FIND_DIAGNOSIS_BY_MEDICAL_RECORD)) {
-            statement.setInt(1, medicalRecordId);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    diagnosis = new Diagnosis(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
-                            new Date(resultSet.getTimestamp(4).getTime()), resultSet.getInt(5), resultSet.getInt(6),
-                            resultSet.getBoolean(7));
-                }
-            }
-        } catch (SQLException e) {
-            logger.error("Exception while getting diagnosis", e);
-        }
-        return diagnosis;
     }
 
 }

@@ -20,6 +20,17 @@ import model.Patient;
 public class SqlMedicalRecordDAO implements MedicalRecordDAO {
 
     private static final Logger logger = Logger.getLogger(SqlMedicalRecordDAO.class.getName());
+    private static SqlMedicalRecordDAO sqlMedicalRecordDAO = null;
+
+    private SqlMedicalRecordDAO() {
+    }
+
+    public static MedicalRecordDAO getInstance() {
+        if (sqlMedicalRecordDAO == null) {
+            return new SqlMedicalRecordDAO();
+        }
+        return sqlMedicalRecordDAO;
+    }
 
     @Override
     public MedicalRecord create(MedicalRecord medicalRecord) {

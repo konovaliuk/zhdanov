@@ -16,6 +16,17 @@ import model.UserType;
 public class SqlUserTypeDAO implements UserTypeDAO {
 
     public static final Logger logger = Logger.getLogger(SqlUserTypeDAO.class.getName());
+    private static SqlUserTypeDAO sqlUserTypeDAO = null;
+
+    private SqlUserTypeDAO() {
+    }
+
+    public static UserTypeDAO getInstance() {
+        if (sqlUserTypeDAO == null) {
+            return new SqlUserTypeDAO();
+        }
+        return sqlUserTypeDAO;
+    }
 
     @Override
     public UserType create(UserType userType) {
@@ -92,7 +103,6 @@ public class SqlUserTypeDAO implements UserTypeDAO {
 
     @Override
     public List<UserType> findAll() {
-
         return null;
     }
 

@@ -20,6 +20,17 @@ import model.PrescriptionType;
 public class SqlPrescriptionDAO implements PrescriptionDAO {
 
     public static final Logger logger = Logger.getLogger(SqlPrescriptionDAO.class.getName());
+    private static SqlPrescriptionDAO sqlPrescriptionDAO = null;
+
+    private SqlPrescriptionDAO() {
+    }
+
+    public static SqlPrescriptionDAO getInstance() {
+        if (sqlPrescriptionDAO == null) {
+            return new SqlPrescriptionDAO();
+        }
+        return sqlPrescriptionDAO;
+    }
 
     @Override
     public Prescription create(Prescription prescription) {

@@ -18,7 +18,19 @@ import model.Patient;
 public class SqlPatientDAO implements PatientDAO {
 
     private static final Logger logger = Logger.getLogger(SqlPatientDAO.class.getName());
+    private static SqlPatientDAO sqlPatientDAO = null;
 
+    private SqlPatientDAO() {
+    }
+
+    public static PatientDAO getInstance() {
+        if (sqlPatientDAO == null) {
+            return new SqlPatientDAO();
+        }
+        return sqlPatientDAO;
+    }
+    
+    
     @Override
     public Patient create(Patient patient) {
         try (Connection connection = ConnectionPool.getConnection();
@@ -135,5 +147,7 @@ public class SqlPatientDAO implements PatientDAO {
         }
         return patientList;
     }
+
+   
 
 }

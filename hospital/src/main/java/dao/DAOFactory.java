@@ -24,32 +24,31 @@ public class DAOFactory {
     }
 
     public UserDAO getUserDAO() {
-        return new SqlUserDAO();
+        return SqlUserDAO.getInstance();
     }
 
     public UserTypeDAO getUserTypeDAO() {
-        return new SqlUserTypeDAO();
+        return SqlUserTypeDAO.getInstance();
     }
 
     public PatientDAO getPatientDAO() {
-        return new SqlPatientDAO();
+        return SqlPatientDAO.getInstance();
     }
 
     public MedicalRecordDAO getMedicalRecordDAO() {
-        return new SqlMedicalRecordDAO();
+        return SqlMedicalRecordDAO.getInstance();
     }
 
     public PrescriptionDAO getPrescriptionDAO() {
-        return new SqlPrescriptionDAO();
+        return SqlPrescriptionDAO.getInstance();
     }
 
     public PrescriptionTypeDAO getPrescriptionTypeDAO() {
 
-        return new SqlPrescriptionTypeDAO();
+        return SqlPrescriptionTypeDAO.getInstance();
     }
 
     public DiagnosisDAO getDiagnosisDAO() {
-        // TODO Auto-generated method stub
-        return new SqlDiagnosisDAO();
+        return SqlDiagnosisDAO.getInstance();
     }
 }

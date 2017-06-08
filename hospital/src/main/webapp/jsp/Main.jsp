@@ -22,7 +22,7 @@
 				<fmt:message key='mainPage' />
 			</h1>
 			<c:if test="${isInHospital}">
-				<p>Patients in hospital</p>
+				<p><fmt:message key='patientsInHospital' /></p>
 			</c:if>
 		</div>
 		<div>

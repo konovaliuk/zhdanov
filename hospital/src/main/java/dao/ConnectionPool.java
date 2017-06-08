@@ -8,16 +8,18 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class ConnectionPool {
+import org.apache.log4j.Logger;
 
+public class ConnectionPool {
+    public static final Logger logger = Logger.getLogger(ConnectionPool.class.getName());
     private static DataSource dataSource;
 
     static {
         try {
             Context initContext = new InitialContext();
             dataSource = (DataSource) initContext.lookup("java:/comp/env/jdbc/hospital");
-        } catch (NamingException ex) {
-            ex.printStackTrace();
+        } catch (NamingException e) {
+            logger.error(e);
         }
     }
 
@@ -30,7 +32,7 @@ public class ConnectionPool {
         try {
             connection = dataSource.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return connection;
     }

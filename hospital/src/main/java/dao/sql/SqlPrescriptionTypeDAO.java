@@ -15,6 +15,17 @@ import model.PrescriptionType;
 public class SqlPrescriptionTypeDAO implements PrescriptionTypeDAO {
 
     public static final Logger logger = Logger.getLogger(SqlPrescriptionTypeDAO.class.getName());
+    private static SqlPrescriptionTypeDAO sqlPrescriptionTypeDAO = null;
+
+    private SqlPrescriptionTypeDAO() {
+    }
+
+    public static SqlPrescriptionTypeDAO getInstance() {
+        if (sqlPrescriptionTypeDAO == null) {
+            return new SqlPrescriptionTypeDAO();
+        }
+        return sqlPrescriptionTypeDAO;
+    }
 
     @Override
     public PrescriptionType findByType(String type) {
