@@ -1,0 +1,292 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #d3e6fb;
+}
+ul, li {
+    list-style: none;
+}
+.container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-header {
+    font-size: 14px;
+    color: #7f8b96;
+}
+
+table {
+    background-color: white;
+    border: 1px solid #c8dbf0;
+    border-radius: 2px;
+    border-collapse: collapse;
+
+}
+
+td {
+    padding-left: 6px;
+    vertical-align: middle;
+    min-width: 120px;
+    height: 30px;
+    border-bottom: 1px dashed #c8dbf0;
+}
+
+
+a {
+    text-decoration: none;
+    color: #3791ff;
+}
+
+a:hover {
+    color: #32d24e;
+    border-bottom: 1px solid #32d24e;
+}
+
+button {
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-search, .form-registration {
+    margin-top: 20px;
+}
+
+.form-search label {
+    font-size: 12px;
+}
+
+.form-search input {
+    padding-left: 6px;
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #c8dbf0;
+}
+
+.form-search button {
+    background-color: #3791ff;
+}
+
+.form-registration button {
+    background-color: #32d24e;
+}
+.form-logout button {
+    background-color: #e64745;
+    width: 200px;
+}
+.form-to_main button {
+    background-color: #3791ff;
+    width: 200px;
+}
+.form-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.language {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 100px;
+}
+.language button {
+    margin-left: 10px;
+    background-color: #32d24e;
+    border-radius: 20px;
+    width: 50px;
+}
+.language button:active {
+    background-color: #3085ff;
+}
+
+button:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.container-patient_info{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.form-medical_records button {
+    background-color: #32d24e;
+    width: 200px;
+}
+.form-create_mr {
+    text-align: center;
+}
+.form-create_mr button {
+    background-color: #3791ff;
+    width: 400px;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.container-medical_records {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.med {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.med button {
+    background-color: #3791ff;
+    width: 400px;
+}
+.mr-button {
+    text-align: center;
+}
+.container-patient_registration {
+    height: 100%;
+}
+.patient-registration {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.patient-registration input {
+    margin-bottom: 16px;
+    padding-left: 6px;
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #c8dbf0;
+}
+.patient-registration input[type='checkbox'] {
+    margin-bottom: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+    border: none;
+}
+.patient-registration label {
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+.patient-registration button {
+    background-color: #3791ff;
+    width: 200px;
+}
+
+.patient-registration-form {
+    display: flex;
+    flex-direction: column;
+}
+.error {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 48px;
+    font-weight: bold;
+}
+.container-registration {
+    height: 100%;
+}
+.autorizationForm {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.autorizationForm button {
+    background-color: #32d24e;
+    width: 200px;
+}
+.autorizationForm input {
+    margin-bottom: 16px;
+    padding-left: 6px;
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #c8dbf0;
+}
+.autorizationForm label {
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+.table-mr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.medical_records-table {
+    margin-bottom: 40px;
+}
+.prescription-action {
+    text-align: center;
+}
+.prescription-action button {
+    background-color: #3085ff;
+    width: 100px;
+}
+.prescription-info ul {
+    padding: 0;
+}
+
+.prescription-info li {
+    font-size: 14px;
+    background-color: #c8dbf0;
+    border-radius: 2px;
+    margin-top: 2px;
+    padding: 6px;
+
+}
+.prescription-info p {
+    font-weight: bold;
+}
+.prescription-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+label {
+    cursor: pointer;
+    padding: 6px;
+}
+textarea {
+    margin-bottom: 6px;
+}
+button.diagnosis-button {
+    width: 100%;
+}
