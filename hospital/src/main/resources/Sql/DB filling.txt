@@ -1,0 +1,56 @@
+INSERT INTO user_type (type) 
+VALUES ('Doctor'),('Nurse');
+
+
+
+
+INSERT INTO user (first_name, last_name, date_of_birth, phone_number, email, password, user_type_id)
+VALUES 
+('Dmitriy', 'Zhdanov', '1993-12-19','+380973479672', 'doctor@gmail.com', 'root', 1),
+('Anastasia', 'Shevchenko', '1994-2-8','+380931234567', 'nurse@gmail.com', 'root', 2);
+
+
+INSERT INTO patient(first_name, last_name, date_of_birth, phone_number)
+VALUES 
+('Ivan', 'Ivanov', '1991-1-1', '+380930000001'),
+('Vasiliy', 'Vasiliev', '1992-2-2', '+380930000002'),
+('Vladimir', 'Vladimirov', '1993-3-3', '+380930000003'),
+('Nikokai', 'Nikolaev', '1994-2-2', '+380930000004');
+
+
+INSERT INTO prescription_type(type) 
+VALUES('Medication'),('Procedure'),('Surgery');
+
+
+INSERT INTO medical_record(opened, closed, patient_id) VALUES ('2017-5-1','2017-5-31', 1);
+INSERT INTO medical_record(opened, patient_id) VALUES ('2017-6-1', 2), ('2017-6-2', 3), ('2017-6-3', 4);
+
+
+INSERT INTO diagnosis(name, description, date, medical_record_id, doctor_id, is_final)
+VALUES('Sinusitis', 'Unilateral sinusitis', '2017-5-1', 1, 1, false),
+('Sinusitis', 'bilateral sinusitis', '2017-5-31', 1, 1, true);
+
+
+
+INSERT INTO prescription(name, description, performance_date, type_id, medical_record_id, prescriber_id, performer_id, is_done)
+VALUES('Aspirin', 'after meal', '2017-5-2', 1, 1, 1, 1,  true);
+INSERT INTO prescription(name, description, performance_date, type_id, medical_record_id, prescriber_id, is_done)
+VALUES
+('Appendicitis', 'operation details', '2017-6-9', 3, 2, 1, false),
+('Aspirin', 'before meal', '2017-6-9', 1, 2, 1, false),
+('Aspirin', 'after meal', '2017-6-9', 1, 2, 1, false),
+('Aspirin', 'after meal', '2017-6-9', 1, 2, 1, false);
+
+select * from user_type ;
+select * from user ;
+select * from patient;
+select * from prescription_type;
+select * from medical_record;
+select * from diagnosis;
+select * from prescription;
+
+
+select * from prescription join prescription_type on prescription.type_id=prescription_type.id where medical_record_id= 2  AND is_done=false ORDER BY performance_date;
+
+select patient.id, first_name, last_name, date_of_birth, phone_number, medical_record.id as medical_record_id, opened 
+from patient join medical_record on(patient.id = medical_record.patient_id) where closed is null group by medical_record.patient_id;
